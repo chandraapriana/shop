@@ -15,7 +15,7 @@ const Sidebar = () => {
     icon:"/assets/icons/ic_cart.svg"
   }],[])
   return (
-    <div className='md:w-28  bg-white  h-[95%] m-6 fixed rounded-2xl drop-shadow-lg flex flex-col items-center' >
+    <div className='md:w-28  bg-white  h-[100%] m-6 relative rounded-2xl drop-shadow-lg flex flex-col items-center' >
         <div className='w-full h-16 flex justify-center items-center  border-gray-400 border-b-[1px] border-solid'>     
             <Image src="/assets/icons/ic_inventory.svg" width={42} height={42}  alt='icon-inventory'/>
         </div>
