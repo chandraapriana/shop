@@ -1,5 +1,7 @@
 
-"use client"
+"use client";
+import useGetAllProducts from '@/hooks/useGetAllProducts';
+import { useMemo } from 'react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -26,10 +28,10 @@ import {
       legend: {
         position: 'top' as const,
       },
-    //   title: {
-    //     display: true,
-    //     text: 'Chart.js Bar Chart',
-    //   },
+      title: {
+        display: true,
+        text: 'Chart.js Bar Chart',
+      },
     },
     maintainAspectRatio: false,
     aspectRatio: 1
@@ -41,7 +43,7 @@ import {
     labels,
     datasets: [
       {
-        label: 'Sum by product',
+        label: 'Total items by product',
         data: [1,2,3,4,5],
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
@@ -50,12 +52,28 @@ import {
   };
 
 export default function BarChart() {
-    
-    return (
-        <div className='bg-white rounded-2xl shadow-xl w-[500px]' style={{ width:"500px" }}>   
-       <Bar options={options} data={data} width={"100%"} height={"100%"}  />
-       </div>
+    const {data}= useGetAllProducts();
+
+    const chartData = useMemo(
+        () =>  {
+            return{
+                labels:data?.map(product=>product.title),
+                datasets: [
+                    {
+                        label: 'Total items by product',
+                        data: data?.map(product=>product.stock),
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    },
+                ],
+            }
+          },
+        [data]
+    );
       
+    return (
+        <div className='bg-white p-2 rounded-2xl shadow-xl w-[700px] h-[300px]' >   
+            <Bar options={options} data={chartData} width={"100%"} height={"100%"}  />
+        </div>
     );
   }
   
