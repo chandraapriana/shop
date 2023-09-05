@@ -1,9 +1,8 @@
-import Sidebar from "@/components/Sidebar";
+import HomePage from "@/modules/HomePage"
+
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col">
-      <Sidebar/>
-    </main>
+   <HomePage/>
   )
 }

@@ -1,10 +1,7 @@
-import Sidebar from "@/components/Sidebar";
-
+import CartPage from "@/modules/CartPage";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen">
-      <Sidebar/>
-    </main>
+    <CartPage/>
   )
 }
