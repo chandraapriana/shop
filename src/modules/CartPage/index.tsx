@@ -1,11 +1,11 @@
-import Sidebar from '@/components/Sidebar'
+import Sidebar from "@/components/Sidebar";
 
 const CartPage = () => {
   return (
     <main className="flex min-h-screen">
-      <Sidebar/>
+      <Sidebar />
     </main>
-  )
-}
+  );
+};
 
-export default CartPage
+export default CartPage;
