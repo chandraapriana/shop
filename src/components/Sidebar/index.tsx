@@ -19,9 +19,7 @@ const Sidebar = () => {
         <div className='w-full h-16 flex justify-center items-center  border-gray-400 border-b-[1px] border-solid'>     
             <Image src="/assets/icons/ic_inventory.svg" width={42} height={42}  alt='icon-inventory'/>
         </div>
-        {routes.map(route=> <ButtonSidebar {...route}/>)}
-       
-
+        {routes.map(route=> <ButtonSidebar key={route.text} {...route}/>)}
     </div>
   )
 }
