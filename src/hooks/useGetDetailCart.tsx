@@ -1,11 +1,11 @@
 "use client";
-import { ProductType } from "@/utils/type/typeProduct";
+import { CartType } from "@/utils/type/typeCarts";
 import { UserType } from "@/utils/type/typeUser";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 const useGetDetailCart = (id: string) => {
-  const [data, setData] = useState<ProductType>({} as ProductType);
+  const [data, setData] = useState<CartType>({} as CartType);
   const [user, setUser] = useState<UserType>({} as UserType);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   useEffect(() => {
