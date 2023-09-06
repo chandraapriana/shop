@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
+import CartsTable from "./components/CartsTable";
 
 const CartPage = () => {
   return (
@@ -7,6 +8,7 @@ const CartPage = () => {
       <Sidebar />
       <div className="w-full h-14">
         <Header title="Product" />
+        <CartsTable />
       </div>
     </main>
   );
