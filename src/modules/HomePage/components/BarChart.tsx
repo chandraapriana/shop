@@ -66,7 +66,7 @@ export default function BarChart() {
   }, [data]);
 
   return (
-    <div className="bg-white p-2 rounded-2xl shadow-xl w-[700px] h-[300px]">
+    <div className="bg-white p-2 rounded-2xl shadow-xl w-full max-w-[700px] h-[300px]">
       <Bar options={options} data={chartData} width={"100%"} height={"100%"} />
     </div>
   );
