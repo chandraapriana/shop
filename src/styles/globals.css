@@ -16,3 +16,7 @@ body {
   font-weight: 400;
   min-height: 100vh;
 }
+
+.shimmer {
+  @apply animate-pulse bg-neutral-400;
+}
