@@ -3,10 +3,10 @@ import Sidebar from "@/components/Sidebar";
 
 const CartPage = () => {
   return (
-    <main className="flex min-h-screen">
+    <main className="flex h-screen px-6 py-4 flex-row">
       <Sidebar />
       <div className="w-full h-14">
-        <Header title="Cart" />
+        <Header title="Product" />
       </div>
     </main>
   );
