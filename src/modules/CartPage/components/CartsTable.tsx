@@ -11,12 +11,15 @@ import {
   useReactTable,
   getPaginationRowModel,
 } from "@tanstack/react-table";
+
+import { useRouter } from "next/navigation";
 import { InputHTMLAttributes, useEffect, useMemo, useState } from "react";
 
 const CartsTable = () => {
   const { data: dataCarts } = useGetAllCarts();
   const [data, setData] = useState(() => [...dataCarts]);
   const [globalFilter, setGlobalFilter] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     setData(dataCarts);
@@ -33,14 +36,14 @@ const CartsTable = () => {
       columnHelper.accessor((row) => row.totalProducts, {
         id: "totalProduct",
         cell: (info) => <i>{info.getValue()}</i>,
-        header: () => <span>Product</span>,
+        header: () => <span>Total Product</span>,
       }),
       columnHelper.accessor("total", {
-        header: () => "totalPrice",
+        header: () => "Total Price",
         cell: (info) => "$" + info.renderValue(),
       }),
       columnHelper.accessor("totalQuantity", {
-        header: () => <span>totalQuanity</span>,
+        header: () => <span>Total Quantity</span>,
       }),
     ],
     [columnHelper]
@@ -86,15 +89,27 @@ const CartsTable = () => {
           </thead>
           {/* Table Body */}
           <tbody className="h-auto  mt-10">
-            {table.getRowModel().rows.map((row) => (
-              <tr className="" key={row.id}>
-                {row.getVisibleCells().map((cell) => (
-                  <td className={"text-center  py-2"} key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
-              </tr>
-            ))}
+            {table.getRowModel().rows.map((row) => {
+              console.log(row);
+              return (
+                <tr
+                  onClick={() => router.push(`/carts/${row.original.id}`)}
+                  className="cursor-pointer"
+                  key={row.id}
+                >
+                  {row.getVisibleCells().map((cell) => {
+                    return (
+                      <td className={"text-center  py-2"} key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
