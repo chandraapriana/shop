@@ -61,7 +61,7 @@ const CartsTable = () => {
   });
 
   return (
-    <div className=" flex flex-col mt-4 justify-between bg-white p-2 rounded-2xl shadow-xl w-[1000px] min-h-[556px] h-[556px]">
+    <div className=" flex flex-col mt-4 justify-between bg-white p-2 rounded-2xl shadow-xl w-full max-w-[800px]  min-h-[556px] h-auto lg:h-[556px]">
       <div className="flex flex-row justify-between">
         <h1 className="font-bold">Table Carts</h1>
       </div>

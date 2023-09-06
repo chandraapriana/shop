@@ -9,7 +9,7 @@ const DetailCartPage = ({ id }: { id: string }) => {
   const { data, user } = useGetDetailCart(id);
 
   return (
-    <main className="flex h-screen px-6 py-4 flex-row">
+    <main className="flex h-screen w-full px-6 py-4 flex-row">
       <Sidebar />
       <div className="w-full h-14">
         <Header title="Cart Detail" />
