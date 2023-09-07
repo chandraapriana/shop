@@ -7,18 +7,40 @@ import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
-  getFilteredRowModel,
+  FilterFn,
   useReactTable,
   getPaginationRowModel,
 } from "@tanstack/react-table";
 
 import { useRouter } from "next/navigation";
-import { InputHTMLAttributes, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { RankingInfo, rankItem } from "@tanstack/match-sorter-utils";
 
+declare module "@tanstack/table-core" {
+  interface FilterFns {
+    fuzzy: FilterFn<unknown>;
+  }
+  interface FilterMeta {
+    itemRank: RankingInfo;
+  }
+}
+
+const fuzzyFilter: FilterFn<any> = (row, columnId, value, addMeta) => {
+  // Rank the item
+  const itemRank = rankItem(row.getValue(columnId), value);
+
+  // Store the itemRank info
+  addMeta({
+    itemRank,
+  });
+
+  // Return if the item should be filtered in/out
+  return itemRank.passed;
+};
 const CartsTable = () => {
   const { data: dataCarts } = useGetAllCarts();
   const [data, setData] = useState(() => [...dataCarts]);
-  const [globalFilter, setGlobalFilter] = useState("");
+
   const router = useRouter();
 
   useEffect(() => {
@@ -51,12 +73,10 @@ const CartsTable = () => {
   const table = useReactTable({
     data,
     columns,
-    state: {
-      globalFilter: globalFilter,
+    filterFns: {
+      fuzzy: fuzzyFilter,
     },
-    onGlobalFilterChange: setGlobalFilter,
     getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
 
@@ -148,36 +168,3 @@ const CartsTable = () => {
 };
 
 export default CartsTable;
-
-function DebouncedInput({
-  value: initialValue,
-  onChange,
-  debounce = 200,
-  ...props
-}: {
-  value: string | number;
-  onChange: (value: string | number) => void;
-  debounce?: number;
-} & Omit<InputHTMLAttributes<HTMLInputElement>, "onChange">) {
-  const [value, setValue] = useState(initialValue);
-
-  useEffect(() => {
-    setValue(initialValue);
-  }, [initialValue]);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      onChange(value);
-    }, debounce);
-
-    return () => clearTimeout(timeout);
-  }, [value, debounce, onChange]);
-
-  return (
-    <input
-      {...props}
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-    />
-  );
-}
