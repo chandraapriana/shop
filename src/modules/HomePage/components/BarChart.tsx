@@ -29,7 +29,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Chart.js Bar Chart",
+      text: "Total items per product Chart",
     },
   },
   maintainAspectRatio: false,
@@ -42,7 +42,7 @@ export const data = {
   labels,
   datasets: [
     {
-      label: "Total items by product",
+      label: "Total items per product",
       data: [1, 2, 3, 4, 5],
       backgroundColor: "rgba(255, 99, 132, 0.5)",
     },
