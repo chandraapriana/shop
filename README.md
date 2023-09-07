@@ -1,34 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align='center'> Next.js Test</h1>
 
-## Getting Started
+<p align='center'>Shop Management Web App
 
-First, run the development server:
+### Install
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+```js
+$ npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Run
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```js
+$ npm install
+$ npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Tech Stack
 
-## Learn More
+<table>
+<tr>
+<td>
+Next.js
+</td>
+<td>
+A popular React framework for building modern web applications.
+</td>
+</tr>
 
-To learn more about Next.js, take a look at the following resources:
+<tr>
+<td>
+react-chartjs-2
+</td>
+<td>
+A React wrapper for Chart.js, making it easy to create interactive charts and graphs. 
+</td>
+</tr>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<tr>
+<td>
+@tanstack/react-table
+</td>
+<td>
+A flexible and customizable table library for React applications
+</td>
+</tr>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<tr>
+<td>
+axios
+</td>
+<td>
+A promise-based HTTP client for making HTTP requests.
+</td>
+</tr>
 
-## Deploy on Vercel
+<tr>
+<td>
+TypeScript (Typed Superset of JavaScript)
+</td>
+<td>
+TypeScript is a superset of JavaScript that adds static typing to the language. It helps catch type-related errors during development, provides better tooling support, and enhances code readability and maintainability. If you're using TypeScript with React, you'll benefit from improved type safety and autocompletion within your components.
+</td>
+</tr>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<tr>
+<td>
+Vercel
+</td>
+<td>
+Vercel is a cloud platform designed to simplify the deployment and hosting of web applications. It offers developers an efficient and user-friendly way to take their code from a local development environment to a live website with minimal effort.
+</td>
+</tr>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+</table>
