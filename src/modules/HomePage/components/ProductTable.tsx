@@ -72,9 +72,29 @@ const ProductTable = () => {
   }, [dataProduct]);
 
   const [globalFilter, setGlobalFilter] = useState("");
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
+    window.localStorage.getItem("column_filter")
+      ? JSON.parse(window.localStorage.getItem("column_filter") as string)
+      : []
+  );
 
   const columnHelper = createColumnHelper<ProductType>();
+
+  useEffect(() => {
+    if (columnFilters) {
+      window.localStorage.setItem(
+        "column_filter",
+        JSON.stringify(columnFilters)
+      );
+    }
+  }, [columnFilters]);
+
+  useEffect(() => {
+    const lsColFilter = JSON.parse(
+      window.localStorage.getItem("column_filter") as string
+    );
+    setColumnFilters(lsColFilter ? lsColFilter : []);
+  }, []);
 
   const columns = useMemo(
     () => [
@@ -103,6 +123,8 @@ const ProductTable = () => {
     ],
     [columnHelper]
   );
+
+  console.log(columnFilters);
   const table = useReactTable({
     data,
     columns,
@@ -123,9 +145,6 @@ const ProductTable = () => {
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
     getFacetedMinMaxValues: getFacetedMinMaxValues(),
-    debugTable: true,
-    debugHeaders: true,
-    debugColumns: false,
   });
 
   return (
@@ -192,7 +211,17 @@ const ProductTable = () => {
       </div>
 
       <div className="flex  justify-end">
-        <div className="bg-white p-2 rounded-2xl shadow-xl gap-3">
+        <div className="bg-white p-2 rounded-2xl shadow-xl gap-3 border mr-2 border-gray-200">
+          <button
+            onClick={() => {
+              setColumnFilters([]);
+            }}
+            className="  mx-2  text-gray leading-none text-sm   rounded-full"
+          >
+            Reset Filter
+          </button>
+        </div>
+        <div className="bg-white p-2 rounded-2xl shadow-xl gap-3 border border-gray-200">
           <button
             onClick={() => table.setPageIndex(0)}
             className="w-6 h-6  mx-2 shadow text-gray leading-none text-[10px]  bg-gray-300 rounded-full"
@@ -247,7 +276,7 @@ function Filter({
         : Array.from(column.getFacetedUniqueValues().keys()).sort(),
     [column.getFacetedUniqueValues()] //eslint-disable-line
   );
-
+  console.log(column.getFilterValue());
   return typeof firstValue === "number" ? (
     <div>
       <div className="flex space-x-2">
