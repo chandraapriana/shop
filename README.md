@@ -15,6 +15,74 @@ $ npm install
 $ npm run dev
 ```
 
+### Project Features
+
+<table>
+<tr>
+<td>
+Product Listing
+</td>
+<td>
+Easily view a comprehensive list of products presented in a tabular format for efficient product management.
+</td>
+</tr>
+
+<tr>
+<td>
+Advanced Filtering
+</td>
+<td>
+Utilize robust filtering options to narrow down your product selection by Brand, Product, Price Range, and Category. This feature streamlines the search for specific items, making product management a breeze.
+</td>
+</tr>
+
+<tr>
+<td>
+Quick Search
+</td>
+<td>
+Swiftly locate products by name using our quick search feature. Enhance accessibility and reduce browsing time, ensuring you can find what you need with ease
+</td>
+</tr>
+
+<tr>
+<td>
+Auto-Saved Filters
+</td>
+<td>
+The application automatically saves your applied filters and search queries. This ensures that you can quickly access your preferred views during future sessions, saving you time and effort.
+</td>
+</tr>
+
+<tr>
+<td>
+Product Statistics
+</td>
+<td>
+Gain valuable insights with our dynamic chart feature. It provides administrators with a visual representation of the number of items per product. Make data-driven decisions with ease.
+</td>
+</tr>
+
+<tr>
+<td>
+Cart Management
+</td>
+<td>
+Effortlessly oversee customer interactions with our cart management tool. Access a table listing all available shopping carts, simplifying cart administration.
+</td>
+</tr>
+
+<tr>
+<td>
+Cart Details
+</td>
+<td>
+For comprehensive insight into customer shopping behavior, administrators can delve into the specific details of individual shopping carts. Understand your customers and their preferences better.
+</td>
+</tr>
+
+</table>
+
 ### Tech Stack
 
 <table>
