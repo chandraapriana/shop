@@ -2,6 +2,10 @@
 
 <p align='center'>Shop Management Web App
 
+### Demo:
+
+[Link to Demo](https://shop-test-dealls.vercel.app/)
+
 ### Install
 
 ```js
