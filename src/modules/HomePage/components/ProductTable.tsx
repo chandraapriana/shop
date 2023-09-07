@@ -73,7 +73,8 @@ const ProductTable = () => {
 
   const [globalFilter, setGlobalFilter] = useState("");
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
-    window.localStorage.getItem("column_filter")
+    typeof window !== "undefined" &&
+      window.localStorage.getItem("column_filter")
       ? JSON.parse(window.localStorage.getItem("column_filter") as string)
       : []
   );
@@ -81,7 +82,7 @@ const ProductTable = () => {
   const columnHelper = createColumnHelper<ProductType>();
 
   useEffect(() => {
-    if (columnFilters) {
+    if (columnFilters && typeof window !== "undefined") {
       window.localStorage.setItem(
         "column_filter",
         JSON.stringify(columnFilters)
@@ -90,10 +91,12 @@ const ProductTable = () => {
   }, [columnFilters]);
 
   useEffect(() => {
-    const lsColFilter = JSON.parse(
-      window.localStorage.getItem("column_filter") as string
-    );
-    setColumnFilters(lsColFilter ? lsColFilter : []);
+    if (typeof window !== "undefined") {
+      const lsColFilter = JSON.parse(
+        window.localStorage.getItem("column_filter") as string
+      );
+      setColumnFilters(lsColFilter ? lsColFilter : []);
+    }
   }, []);
 
   const columns = useMemo(
